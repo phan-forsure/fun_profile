@@ -30,11 +30,11 @@ body {
 .avatar {
   position: relative;
   top: -10vh;
-  left: calc(50% - 12.5vh);
+  left: calc(50% - 10vh);
   background-image: url("/pfp.jpg");
   background-size: cover;
-  width: 25vh;
-  height: 25vh;
+  width: 20vh;
+  height: 20vh;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -44,10 +44,6 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas: "profile profile window window window";
-} */
-
-/* .profile {
-  grid-area: profile;
 } */
 
 .click-me {
