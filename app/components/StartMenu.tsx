@@ -1,17 +1,11 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useSound } from "react-sounds";
-import Main from "./Main";
+import Nav from "./Nav";
 
 export default function StartMenu() {
-  const moveAbleRef = useRef<HTMLDivElement>(null);
-  const { play } = useSound("ui/pop_open");
+  const { play } = useSound("ui/button_soft_double");
   const [menu, setMenu] = useState(false);
-  // const [isDragging, setIsDragging] = useState(false);
-  const [position, setPosition] = useState<{
-    x: number | undefined;
-    y: number | undefined;
-  }>({ x: undefined, y: undefined });
 
   // useEffect(() => {
   //   function handleMouseMove(event: MouseEvent) {
@@ -42,25 +36,22 @@ export default function StartMenu() {
 
   return (
     <>
-      <div
-        ref={moveAbleRef}
-        // onMouseDown={handleMouseDown}
-        onClick={() => {
-          setMenu(true);
-          setPosition({ x: 200, y: 100 });
-          play();
-        }}
-        style={{
-          position: "absolute",
-          left: position.x,
-          top: position.y,
-          transform: "translate(-50%, -50%)",
-        }}
-        className="click-me w-52 border-[1px] h-10 text-sm cursor-pointer select-none bg-[#161616] rounded-sm transition-[.1s]"
-      >
-        click me :)
+      <div className="w-92 h-[100vh] flex flex-col justify-center items-center">
+        <div
+          onClick={() => {
+            if (menu) {
+              setMenu(false);
+            } else {
+              setMenu(true);
+            }
+            play();
+          }}
+          className="click-me relative flex top-0 justify-center items-center w-52 border-[1px] h-10 text-sm cursor-pointer select-none bg-[#161616] rounded-sm transition-[.1s]"
+        >
+          {menu ? "close :(" : "click me :)"}
+        </div>
+        {menu && <Nav />}
       </div>
-      {menu && <Main left={position.x} top={position.y} />}
     </>
   );
 }
