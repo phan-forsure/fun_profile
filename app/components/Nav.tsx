@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import List from "./List";
 
-export default function Windows() {
+export default function Nav() {
   return (
     <motion.div
       className="select-none"
