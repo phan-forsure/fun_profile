@@ -5,7 +5,11 @@ import Main from "./Main";
 export default function Windows() {
   const openWindows = useContext(WindowsContext);
   return (
-    <div className={`absolute w-full h-full select-none ${openWindows.openWindows.size != 0 && "z-20"}`}>
+    <div
+      className={`absolute w-0 h-0 left-0 top-0 select-none ${
+        openWindows.openWindows.size != 0 && "z-20"
+      }`}
+    >
       {openWindows.openWindows.has("About me :3") && (
         <Main name={"About me :3"} left={100} top={100} />
       )}
