@@ -3,19 +3,22 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useSound } from "react-sounds";
 
 export default function WindowBar({ windowName }: { windowName: string }) {
-  const { openWindows, setOpenWindows } = useContext(WindowsContext);
+  const { openWindows, setOpenWindows, zIndexMap, setZIndexMap } =
+    useContext(WindowsContext);
   const [isDragging, setIsDragging] = useState(false);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
   const moveAbleRef = useRef<HTMLDivElement>(null);
   const { play } = useSound("ui/button_soft_double");
 
   useEffect(() => {
     function handleMouseMove(event: MouseEvent) {
       if (isDragging && moveAbleRef.current?.parentElement) {
-        moveAbleRef.current.parentElement.style.left = `${event.clientX}px`;
-        moveAbleRef.current.parentElement.style.top = `${event.clientY}px`;
-        moveAbleRef.current.parentElement.style.zIndex = `${
-          isDragging ? "z-1000" : "z-1"
-        }`;
+        moveAbleRef.current.parentElement.style.left = `${
+          event.clientX - offset.x
+        }px`;
+        moveAbleRef.current.parentElement.style.top = `${
+          event.clientY - offset.y
+        }px`;
       }
     }
 
@@ -30,9 +33,20 @@ export default function WindowBar({ windowName }: { windowName: string }) {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [isDragging]);
+  }, [isDragging, offset]);
 
-  function handleMouseDown() {
+  function handleMouseDown(event: React.MouseEvent) {
+    if (moveAbleRef.current?.parentElement) {
+      const rect = moveAbleRef.current.parentElement.getBoundingClientRect();
+      setOffset({
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top,
+      });
+
+      // Update zIndexMap to bring this window to the front
+      const maxZIndex = Math.max(...Object.values(zIndexMap), 0);
+      setZIndexMap({ ...zIndexMap, [windowName]: maxZIndex + 1 });
+    }
     setIsDragging(true);
   }
 
@@ -40,6 +54,7 @@ export default function WindowBar({ windowName }: { windowName: string }) {
     <div
       onMouseDown={handleMouseDown}
       ref={moveAbleRef}
+      style={{ zIndex: zIndexMap[windowName] || 1 }}
       className={`border-b-1 flex justify-end items-center p-1`}
     >
       <span

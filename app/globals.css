@@ -45,3 +45,11 @@ body {
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas: "profile profile window window window";
 } */
+
+.close-button:active {
+  @apply text-red-400;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}

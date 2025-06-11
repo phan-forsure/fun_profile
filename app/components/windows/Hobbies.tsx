@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import WindowBar from "../WindowBar";
 
-export default function Main({
+export default function Hobbies({
   left,
   top,
   name,
@@ -20,14 +20,8 @@ export default function Main({
       style={{ left: left!, top: top!, zIndex: zIndex }}
     >
       <WindowBar windowName={name} />
-      <div className="overflow-y-scroll h-[70vh]">
-        <div className="background-image"></div>
-        <div className="avatar h-fit"></div>
-        <div className="about flex justify-center items-center">
-          <h1 className="text-3xl pb-12 antialiased font-semibold tracking-[-0.02em] h-fit">
-            Phan
-          </h1>
-        </div>
+      <div className="overflow-y-scroll h-[50vh]">
+        
       </div>
     </motion.div>
   );
