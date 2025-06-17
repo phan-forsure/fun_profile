@@ -8,7 +8,7 @@ export default function Nav() {
       initial={{ scale: 0.99, opacity: 0.5 }}
       animate={{ scale: 1, opacity: 1 }}
     >
-      <div className="w-52 bg-[#161616] flex flex-wrap justify-center items-center h-fit border-1 rounded-sm mt-12 py-8">
+      <div className="w-52 bg-[#161616] flex flex-wrap justify-center items-center h-fit border-1 rounded-sm mt-12 py-4">
         <div className="w-fit">
           <List />
         </div>

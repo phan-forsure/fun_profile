@@ -23,7 +23,7 @@ export default function Windows() {
       )}
       {openWindows.has("Socials ^-^") && (
         <Socials
-          name={"Socials ^-^"}
+          name={"Socials ^-^"}  
           left={100}
           top={100}
           zIndex={zIndexMap["Socials ^-^"]}
