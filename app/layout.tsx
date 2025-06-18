@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+// import { getOsuUserData } from "./lib/data";
 
 export const metadata: Metadata = {
   title: "ファンのウェブサイト",
@@ -10,6 +11,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // getOsuUserData();
   return (
     <html lang="en">
       <body>{children}</body>

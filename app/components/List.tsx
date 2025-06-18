@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { playSound, useSound } from "react-sounds";
-import { WindowsContext } from "../page";
+import { WindowsContext } from "@/app/lib/context";
 
 export default function List() {
   const { openWindows, setOpenWindows } = useContext(WindowsContext);
@@ -24,7 +24,7 @@ export default function List() {
             play();
           }}
           key={e}
-          className="my-7 w-28 text-center cursor-pointer opacity-80 active:opacity-100"
+          className="my-[4vh] w-28 text-center cursor-pointer opacity-80 active:opacity-100"
         >
           {e}
         </div>

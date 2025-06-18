@@ -1,4 +1,4 @@
-import { WindowsContext } from "@/app/page";
+import { WindowsContext } from "@/app/lib/context";
 import { useContext } from "react";
 import Main from "./Main";
 import Hobbies from "./Hobbies";

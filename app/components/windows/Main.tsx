@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import WindowBar from "../WindowBar";
+import { useEffect } from "react";
 
 export default function Main({
   left,
@@ -12,6 +13,28 @@ export default function Main({
   name: string;
   zIndex: number;
 }) {
+  // useEffect(() => {
+  //   const url = new URL("https://osu.ppy.sh/api/v2/users/34406127/osu");
+
+  //   // const params = {
+  //   //   key: ""
+  //   // };
+  //   // Object.keys(params).forEach((key) =>
+  //   //   url.searchParams.append(key, params[key])
+  //   // );
+
+  //   const headers = {
+  //     "Content-Type": "application/json",
+  //     Accept: "application/json",
+  //     Authorization: "Bearer x21nJRBjXuIyMfyqcjFIjZToYo41QDAEQv6uSOYj",
+  //   };
+
+  //   fetch(url, {
+  //     method: "GET",
+  //     headers,
+  //   }).then((response) => response.json().then((res) => console.log(res)));
+  // }, []);
+
   return (
     <motion.div
       initial={{ scale: 0.9 }}
