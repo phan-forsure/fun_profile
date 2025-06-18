@@ -1,4 +1,4 @@
-import { WindowsContext } from "@/app/page";
+import { WindowsContext } from "@/app/lib/context";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useSound } from "react-sounds";
 
