@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "dotenv": "^17.0.1",
     "howler": "^2.2.4",
     "motion": "^12.16.0",
     "next": "15.3.3",

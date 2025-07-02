@@ -19,14 +19,14 @@ body {
   overflow: hidden;
 }
 
-.background-image {
+/* .background-image {
   background-image: url("/backgroundWallpaper.png");
   background-size: cover;
   background-position: center;
   height: 50vh;
   width: 100%;
-}
-
+} */
+/* 
 .avatar {
   position: relative;
   top: -10vh;
@@ -37,7 +37,7 @@ body {
   height: 20vh;
   border-radius: 50%;
   object-fit: cover;
-}
+} */
 /* 
 .app {
   margin: 1em;

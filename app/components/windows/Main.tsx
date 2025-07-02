@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import WindowBar from "../WindowBar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Main({
   left,
@@ -13,27 +13,42 @@ export default function Main({
   name: string;
   zIndex: number;
 }) {
-  // useEffect(() => {
-  //   const url = new URL("https://osu.ppy.sh/api/v2/users/34406127/osu");
+  interface OsuData {
+    playstyle: string[];
+    avatar_url: string;
+    statistics: {
+      global_rank: number | null;
+      maximum_combo: number | null;
+      pp: number | null;
+      hit_accuracy: number | null;
+      play_count: number | null;
+      play_time: number | null;
+    };
+    username: string;
+  }
 
-  //   // const params = {
-  //   //   key: ""
-  //   // };
-  //   // Object.keys(params).forEach((key) =>
-  //   //   url.searchParams.append(key, params[key])
-  //   // );
+  const [osu, setOsu] = useState<OsuData>({
+    playstyle: [],
+    avatar_url: "",
+    statistics: {
+      global_rank: null,
+      maximum_combo: null,
+      pp: null,
+      hit_accuracy: null,
+      play_count: null,
+      play_time: null,
+    },
+    username: "",
+  });
 
-  //   const headers = {
-  //     "Content-Type": "application/json",
-  //     Accept: "application/json",
-  //     Authorization: "Bearer x21nJRBjXuIyMfyqcjFIjZToYo41QDAEQv6uSOYj",
-  //   };
-
-  //   fetch(url, {
-  //     method: "GET",
-  //     headers,
-  //   }).then((response) => response.json().then((res) => console.log(res)));
-  // }, []);
+  useEffect(() => {
+    fetch("/api/osu")
+      .then((res) => res.json())
+      .then((res) => {
+        setOsu(res);
+        console.log(res);
+      });
+  }, []);
 
   return (
     <motion.div
@@ -44,12 +59,39 @@ export default function Main({
     >
       <WindowBar windowName={name} />
       <div className="overflow-y-scroll h-[70vh]">
-        <div className="background-image"></div>
-        <div className="avatar h-fit"></div>
-        <div className="about flex justify-center items-center">
-          <h1 className="text-3xl pb-12 antialiased font-semibold tracking-[-0.02em] h-fit">
-            Phan
-          </h1>
+        <h2 className="text-center p-4 text-xl opacity-85 border-b-1">
+          osu! profile
+        </h2>
+        <div className="flex flex-wrap m-4 mt-12">
+          {/* avatar */}
+          <div>
+            <img
+              className="osu-avatar mx-4 w-[20vh] h-[20vh] rounded-lg"
+              src={osu.avatar_url ? osu.avatar_url : undefined}
+            />
+          </div>
+          {/* data */}
+          <div className="flex-1">
+            <div className="opacity-75 text-2xl w-full">{osu.username}</div>
+            <div className="opacity-75 text-2xl">
+              #{osu.statistics.global_rank}
+            </div>
+            <div className="opacity-75 text-2xl">{osu.statistics.pp} pp</div>
+            <div className="opacity-75 text-2xl">
+              {osu.statistics.maximum_combo} maximum combo
+            </div>
+          </div>
+
+          <div className="flex w-full m-2 my-6">
+            <div className="mx-2">
+              {osu.statistics.hit_accuracy?.toPrecision(3)}% hit accuracy
+            </div>{" "}
+            |<div className="mx-2">{osu.statistics.play_count} plays</div> |
+            <div className="mx-2">
+              {(osu.statistics.play_time! / 60 / 60).toPrecision(4)} hours
+              played
+            </div>
+          </div>
         </div>
       </div>
     </motion.div>
