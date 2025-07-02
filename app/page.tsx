@@ -14,7 +14,7 @@ export default function Home() {
     <SoundProvider
       preload={["ui/button_soft_double", "ui/copy"]}
       initialEnabled={true}
-    >
+    > 
       <WindowsContext.Provider
         value={{ openWindows, setOpenWindows, zIndexMap, setZIndexMap }}
       >
