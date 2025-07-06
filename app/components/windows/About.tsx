@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import WindowBar from "../WindowBar";
+import AboutMe from "../AboutMe";
 
 export default function About({
   left,
@@ -20,8 +21,8 @@ export default function About({
       style={{ left: left!, top: top!, zIndex: zIndex }}
     >
       <WindowBar windowName={name} />
-      <div className="overflow-y-scroll h-[50vh]">
-       
+      <div className="overflow-y-scroll h-[70vh]">
+        <AboutMe />
       </div>
     </motion.div>
   );
