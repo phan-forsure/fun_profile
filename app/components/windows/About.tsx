@@ -21,7 +21,7 @@ export default function About({
       style={{ left: left!, top: top!, zIndex: zIndex }}
     >
       <WindowBar windowName={name} />
-      <div className="overflow-y-scroll h-[70vh]">
+      <div className="overflow-y-scroll h-[80vh]">
         <AboutMe />
       </div>
     </motion.div>

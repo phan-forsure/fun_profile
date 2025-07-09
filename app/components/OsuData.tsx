@@ -3,7 +3,7 @@ export default function OsuData({ osu }: { osu: OsuData }) {
     <div className="osu-data border-b-1">
       <h2 className="text-center p-4 text-xl opacity-85 border-b-1">
         osu! profile
-      </h2>x
+      </h2>
       <div className="flex flex-wrap m-4 mt-12">
         {/* avatar */}
         <div>
