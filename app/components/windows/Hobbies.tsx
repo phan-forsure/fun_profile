@@ -20,8 +20,29 @@ export default function Hobbies({
       style={{ left: left!, top: top!, zIndex: zIndex }}
     >
       <WindowBar windowName={name} />
-      <div className="overflow-y-scroll h-[50vh]">
-        
+      <div className="overflow-y-scroll h-[70vh]">
+        <h1 className="text-center p-4 text-xl opacity-85 border-b-1">
+          my hobbies
+        </h1>
+        <div className="flex flex-wrap m-4 p-8">
+          <div className="mb-4">
+            when i have free time i usually play games, program or run in
+            circles until i go crazy
+          </div>
+          <div className="mb-4">
+            my ordinary day doesn't have any amazing things to happen <br />i
+            repeat everyday endlessly
+          </div>
+        </div>
+        <h1 className="text-center p-4 text-xl opacity-85 border-b-1 border-t-1">
+          gallary i gathered over time
+        </h1>
+        <div className="mb-4 gallery grid grid-cols-2">
+          <img src="" alt="img" />
+          <img src="" alt="img" />
+          <img src="" alt="img" />
+          <img src="" alt="img" />
+        </div>
       </div>
     </motion.div>
   );
