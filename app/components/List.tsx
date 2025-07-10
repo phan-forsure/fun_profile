@@ -3,7 +3,8 @@ import { playSound, useSound } from "react-sounds";
 import { WindowsContext } from "@/app/lib/context";
 
 export default function List() {
-  const { openWindows, setOpenWindows } = useContext(WindowsContext);
+  const { openWindows, setOpenWindows, zIndexMap, setZIndexMap } =
+    useContext(WindowsContext);
   const { play } = useSound("ui/button_soft_double");
 
   const openWindow = (name: string) => {
@@ -22,6 +23,8 @@ export default function List() {
           onClick={() => {
             openWindow(e);
             play();
+            const maxZIndex = Math.max(...Object.values(zIndexMap), 0);
+            setZIndexMap({ ...zIndexMap, [e]: maxZIndex + 1 });
           }}
           key={e}
           className="my-[4vh] w-28 text-center cursor-pointer opacity-80 active:opacity-100"
